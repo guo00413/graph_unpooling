@@ -1,4 +1,4 @@
-# Github Repo for _An Unpooling Layer for Graph Generation_
+# PyTorch implementation for _An Unpooling Layer for Graph Generation_
 Accepted in AISTATS 2023
 
 1. Notebooks are located in `./notebooks`
