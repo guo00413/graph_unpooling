@@ -1,6 +1,10 @@
 # PyTorch implementation for _An Unpooling Layer for Graph Generation_
 Accepted in AISTATS 2023
 
+paper URL: TBD
+
+# Repo Summary
+
 1. Notebooks are located in `./notebooks`
 	- For Waxman random graph data:
 		- To produce dataset, please use `RandomGraph_generation.ipynb`.
