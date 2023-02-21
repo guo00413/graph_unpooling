@@ -1,5 +1,7 @@
 # PyTorch implementation for _An Unpooling Layer for Graph Generation_
 
+Accepted in AISTATS 2023.
+
 paper URL: TBD
 
 # Repo Summary
@@ -29,7 +31,7 @@ paper URL: TBD
 	- The evaluation notebooks (e.g. `QM9_evaluation.ipynb`) load those trained models, report their performance metrics and draw some sample molecules.
 4. Source codes are in `./codes/`
 	- Unpooling layer's class is given in `./codes/unpool_layers_simple_v2.py`
-	- Dependence:
+	- Dependence, also see `code/requirements.txt`:
 ```
 		matplotlib==3.5.1
 		networkx==2.6.3
