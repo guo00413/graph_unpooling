@@ -91,3 +91,16 @@ def dataFromSmile(smile_str, without_aroma=False, node_dim=9):
     ys = torch.FloatTensor(calculate_ys(mol))
     return Data(x=xs, edge_index=edge_index, edge_attr=edge_attr, y=ys)
 
+
+
+def dataFromGraph(sg, feature='pos'):
+    nid_to_gid = dict(zip(list(sg.nodes), range(len(sg))))
+    x = np.zeros((len(sg), 2))
+    edge_indexs = np.zeros((2, 0), int)
+    for j in sg.nodes:
+        x[nid_to_gid[j]] = np.array(sg.nodes.data()[j][feature])
+    for i, j in sg.edges:
+        edge_indexs = np.concatenate([edge_indexs, [[nid_to_gid[i]], [nid_to_gid[j]]]], axis=1)
+    edge_indexs = to_undirected(torch.LongTensor(edge_indexs))
+    x = torch.FloatTensor(x)
+    return Data(x=x, edge_index=edge_indexs)
