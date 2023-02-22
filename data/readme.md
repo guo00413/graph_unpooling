@@ -1,4 +1,4 @@
-# Data files
+# Data 
 
 1. The smiles of QM9 are stored in this folder.
 2. ZINC data can be downloaded from https://github.com/wengong-jin/icml18-jtnn/blob/master/data/zinc/all.txt
