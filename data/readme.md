@@ -1,6 +1,6 @@
 # Data 
 
-1. The smiles of QM9(downloaded from [here](https://github.com/wengong-jin/icml18-jtnn/blob/master/data/zinc/all.txt)) and ZINC (downloaded from [here](https://github.com/wengong-jin/icml18-jtnn/blob/master/data/zinc/all.txt)) are stored in this folder.
+1. The smiles of QM9(downloaded from [here]([https://github.com/wengong-jin/icml18-jtnn/blob/master/data/zinc/all.txt](https://github.com/nyu-dl/dl4chem-mgm/blob/master/data/QM9/QM9_smiles.txt))) and ZINC (downloaded from [here](https://github.com/wengong-jin/icml18-jtnn/blob/master/data/zinc/all.txt)) are stored in this folder.
 2. One need to use pre-processing notebooks (qm9_preprocessing.ipynb and ZINC_preprocessing.ipynb) to generate graph data from smiles.
 3. The model training/evaluating uses the preprocessed graph data.
 4. Protein data can be downloaded from https://graphgt.mathcs.emory.edu/datasets/Biology/Protein_dataset.zip
