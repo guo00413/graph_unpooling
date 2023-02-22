@@ -2,7 +2,9 @@
 
 Accepted in AISTATS 2023.
 
-paper URL: TBD
+Paper URL: TBD
+
+Cite the work: TBD
 
 # Repo Summary
 
