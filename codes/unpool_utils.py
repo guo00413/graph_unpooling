@@ -34,7 +34,7 @@ def assemble_skip_z(usex, batch, device='cpu'):
     result = torch.gather(collected, 1, node_orders)
     return result[:, 0, :]
 
-def convert_Batch_to_datalist(x, edge_index, edge_attr, batch, edge_batch):
+def convert_Batch_to_datalist(x, edge_index, edge_attr=None, batch=None, edge_batch=None, device='cpu'):
     """Given a data batch from torch_geometric, return a list of Data.
 
     Args:
@@ -47,18 +47,20 @@ def convert_Batch_to_datalist(x, edge_index, edge_attr, batch, edge_batch):
     Returns:
         a list of Data, each Data is torch_geometric.utils.Data.
     """
-    
     result = []
     for j in range(max(batch) + 1):
-        use_ids = (batch == j).cpu()
-        use_edge_ids = (edge_batch == j).cpu()
-        use_x = x[use_ids].cpu()
-        use_edge_index = edge_index[:, use_edge_ids].cpu()
-        use_edge_attr = edge_attr[use_edge_ids].cpu()
-        remap_ids = torch.arange(len(x))[use_ids]
-        new_ids = torch.arange(len(use_x))
+        use_ids = (batch == j).to(device)
+        use_edge_ids = (edge_batch == j).to(device)
+        use_x = x[use_ids].to(device)
+        use_edge_index = edge_index[:, use_edge_ids].to(device)
+        if edge_attr is not None:
+            use_edge_attr = edge_attr[use_edge_ids].to(device)
+        remap_ids = torch.arange(len(x)).to(device)[use_ids]
+        new_ids = torch.arange(len(use_x)).to(device)
         for k in range(len(new_ids)):
             use_edge_index[use_edge_index == remap_ids[k]] = new_ids[k].item()
-        result.append(Data(x=use_x, edge_index=use_edge_index, edge_attr=use_edge_attr))
+        if edge_attr is not None:
+            result.append(Data(x=use_x, edge_index=use_edge_index, edge_attr=use_edge_attr))
+        else:
+            result.append(Data(x=use_x, edge_index=use_edge_index))
     return result
-
